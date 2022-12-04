@@ -69,10 +69,6 @@ function showPerson(){
     info.textContent = item.text;
 }
 
-function getRandomNumber(){
-  return Math.floor(Math.random() * reviews.length);
-}
-
 next.addEventListener('click',function(){
         currentItem++;
         if(currentItem > reviews.length-1){
@@ -90,6 +86,6 @@ prev.addEventListener('click',function(){
 })
 
 random.addEventListener('click',function(){
-  currentItem = getRandomNumber();
+  currentItem = Math.floor(Math.random() * reviews.length);
   showPerson();
 })
