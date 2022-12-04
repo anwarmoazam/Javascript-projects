@@ -61,12 +61,16 @@ window.addEventListener('DOMContentLoaded',function(){
     showPerson(currentItem);
 })
 
-function showPerson(person){
-    const item = reviews[person];
+function showPerson(){
+    const item = reviews[currentItem];
     img.src = item.img;
     author.textContent = item.name;
     job.textContent = item.job;
     info.textContent = item.text;
+}
+
+function getRandomNumber(){
+  return Math.floor(Math.random() * reviews.length);
 }
 
 next.addEventListener('click',function(){
@@ -74,7 +78,7 @@ next.addEventListener('click',function(){
         if(currentItem > reviews.length-1){
           currentItem = 0
         }
-        showPerson(currentItem);
+        showPerson();
 })
 
 prev.addEventListener('click',function(){
@@ -82,5 +86,10 @@ prev.addEventListener('click',function(){
     if(currentItem < 0){
       currentItem = reviews.length-1;
     }
-    showPerson(currentItem);
+    showPerson();
+})
+
+random.addEventListener('click',function(){
+  currentItem = getRandomNumber();
+  showPerson();
 })
