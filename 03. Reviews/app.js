@@ -84,12 +84,3 @@ prev.addEventListener('click',function(){
     }
     showPerson(currentItem);
 })
-
-// next.addEventListener('click',function(){
-//     reviews.forEach(function(values){
-//         img = values.img;
-//         name.text = values.name;
-//         job.textContent = values.job;
-//         info.text = values.info;
-//     })
-// })
