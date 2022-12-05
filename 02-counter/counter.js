@@ -1,7 +1,7 @@
 let count = 0;
 
-let btns = document.querySelectorAll('.btn');
-let value = document.getElementById('value');
+const btns = document.querySelectorAll('.btn');
+const value = document.getElementById('value');
 
 btns.forEach(function(btn){
     btn.addEventListener('click',function(e){
