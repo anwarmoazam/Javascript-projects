@@ -58,7 +58,7 @@ const random = document.querySelector('.random-btn');
 let currentItem = 0;
 
 window.addEventListener('DOMContentLoaded',function(){
-    showPerson(currentItem);
+    showPerson();
 })
 
 function showPerson(){
