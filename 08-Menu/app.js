@@ -75,19 +75,27 @@ const menu = [
 ];
 
 const sectionCenter = document.querySelector('.section-center');
-const filterBtns = document.querySelectorAll('.filter-btn');
+const filterBtns = document.getElementById('parent-btn');
 
 // load all items
 window.addEventListener('DOMContentLoaded', function () {
   displayMenuItems(menu);
+  filterBtns.addEventListener('click',function(e){
+    const validBtns = e.target.getAttribute('type');
+    if(validBtns === 'button'){
+      console.log(e.target.getAttribute('data-id'));
+    }
+  })
 })
 
 // filter items
-filterBtns.forEach(function(btn){
-  btn.addEventListener('click',function(e){
-    console.log(e.currentTarget.dataset);
-  })
-})
+// filterBtns.forEach(function(btn){
+//   btn.addEventListener('click',function(e){
+//     console.log(e.currentTarget.dataset);
+//   })
+// })
+
+
 
 function displayMenuItems(menuItems) {
   let displayMenu = menuItems.map(function (item) {
