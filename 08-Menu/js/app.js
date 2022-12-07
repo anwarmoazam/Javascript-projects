@@ -83,7 +83,13 @@ window.addEventListener('DOMContentLoaded', function () {
   filterBtns.addEventListener('click',function(e){
     const validBtns = e.target.getAttribute('type');
     if(validBtns === 'button'){
-      console.log(e.target.getAttribute('data-id'));
+      const category = e.target.getAttribute('data-id');
+      const menuCategory = menu.filter(function(menuItem){
+        if(menuItem.category === category){
+          return menuItem;
+        }
+      });
+      displayMenuItems(menuCategory);
     }
   })
 })
@@ -115,3 +121,5 @@ function displayMenuItems(menuItems) {
 
   sectionCenter.innerHTML = displayMenu;
 }
+
+displayMenuItems(menu);
