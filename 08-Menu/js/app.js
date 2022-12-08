@@ -86,10 +86,13 @@ window.addEventListener('DOMContentLoaded', function () {
       const category = e.target.getAttribute('data-id');
       const menuCategory = menu.filter(function(menuItem){
         if(menuItem.category === category){
+          console.log(menuItem);
           return menuItem;
         }
       });
+      
       displayMenuItems(menuCategory);
+      
     }
   })
 })
@@ -121,5 +124,3 @@ function displayMenuItems(menuItems) {
 
   sectionCenter.innerHTML = displayMenu;
 }
-
-displayMenuItems(menu);
