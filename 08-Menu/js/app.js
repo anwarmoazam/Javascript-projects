@@ -84,15 +84,17 @@ window.addEventListener('DOMContentLoaded', function () {
     const validBtns = e.target.getAttribute('type');
     if(validBtns === 'button'){
       const category = e.target.getAttribute('data-id');
-      const menuCategory = menu.filter(function(menuItem){
-        if(menuItem.category === category){
-          console.log(menuItem);
-          return menuItem;
-        }
-      });
-      
-      displayMenuItems(menuCategory);
-      
+      if(category !== 'all'){
+        const menuCategory = menu.filter(function(menuItem){
+          if(menuItem.category === category){
+            console.log(menuItem);
+            return menuItem;
+          }
+        });
+        displayMenuItems(menuCategory);
+      } else{
+        displayMenuItems(menu);
+      }
     }
   })
 })
