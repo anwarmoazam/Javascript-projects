@@ -72,6 +72,14 @@ const menu = [
     img: "./images/item-9.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
+  {
+    id: 10,
+    title: "thali",
+    category: "dinner",
+    price: 39.99,
+    img: "./images/item-10.jpeg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  }
 ];
 
 const sectionCenter = document.querySelector('.section-center');
@@ -80,33 +88,26 @@ const filterBtns = document.getElementById('parent-btn');
 // load all items
 window.addEventListener('DOMContentLoaded', function () {
   displayMenuItems(menu);
-  filterBtns.addEventListener('click',function(e){
-    const validBtns = e.target.getAttribute('type');
-    if(validBtns === 'button'){
-      const category = e.target.getAttribute('data-id');
-      if(category !== 'all'){
-        const menuCategory = menu.filter(function(menuItem){
-          if(menuItem.category === category){
-            console.log(menuItem);
-            return menuItem;
-          }
-        });
-        displayMenuItems(menuCategory);
-      } else{
-        displayMenuItems(menu);
-      }
-    }
-  })
+  displayMenuButtons();
+
 })
 
-// filter items
-// filterBtns.forEach(function(btn){
-//   btn.addEventListener('click',function(e){
-//     console.log(e.currentTarget.dataset);
-//   })
-// })
-
-
+filterBtns.addEventListener('click',function(e){
+  const validBtns = e.target.getAttribute('type');
+  if(validBtns === 'button'){
+    const category = e.target.getAttribute('data-id');
+    if(category !== 'all'){
+      const menuCategory = menu.filter(function(menuItem){
+        if(menuItem.category === category){
+          return menuItem;
+        }
+      });
+      displayMenuItems(menuCategory);
+    } else{
+      displayMenuItems(menu);
+    }
+  }
+})
 
 function displayMenuItems(menuItems) {
   let displayMenu = menuItems.map(function (item) {
@@ -125,4 +126,17 @@ function displayMenuItems(menuItems) {
   displayMenu = displayMenu.join("");
 
   sectionCenter.innerHTML = displayMenu;
+}
+
+function displayMenuButtons(){
+  const categories = menu.reduce(function(acc,curr){
+    if(!acc.includes(curr.category)){
+      acc.push(curr.category);
+    }
+    return acc;
+  },['all'])
+  const categoryButtons = categories.map(function(btn){
+    return `<button type="button" class="filter-btn" data-id="${btn}">${btn}</button>`;
+  }).join("");
+  filterBtns.innerHTML = categoryButtons;
 }
