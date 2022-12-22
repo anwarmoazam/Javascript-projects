@@ -2,16 +2,17 @@ const btnContainer = document.getElementById('my-btn');
 const aboutContent = document.querySelectorAll('.content')
 
 btnContainer.addEventListener('click', function (event) {
-    const currentElement = event.target.tagName.toLowerCase().trim();
-    if (currentElement === 'button') {
-        const btn = event.target.getAttribute('data-id');
+    const clickedElement = event.target.tagName.toLowerCase().trim();
+    if (clickedElement === 'button') {
+        const clickedElementId = event.target.getAttribute('data-id');
+        const btns = btnContainer.querySelectorAll('.tab-btn')
+        btns.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
         aboutContent.forEach(function(article){
             article.classList.remove('active');
-            if(article.id === btn){
+            if(article.id === clickedElementId){
                 article.classList.add('active');        
             }
-
         });
     }
 });
-
