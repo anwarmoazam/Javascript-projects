@@ -32,17 +32,18 @@ let tempYear = tempDate.getFullYear();
 let tempMonth = tempDate.getMonth();
 let tempDay = tempDate.getDate();
 
+// const futureDate = new Date(tempYear, tempMonth, tempDay + 10, 7, 30, 0);
 const futureDate = new Date(tempYear, tempMonth, tempDay + 10, 7, 30, 0);
+
+console.log(futureDate);
 
 const year = futureDate.getFullYear();
 const hours = futureDate.getHours();
 const minutes = futureDate.getMinutes();
 let month = futureDate.getMonth();
 month = months[month];
-const date = futureDate.getDate();
+const date = ("0"+`${futureDate.getDate()}`).slice(-2);
 const weekday = weekdays[futureDate.getDay()];
-
-
 
 
 // Giveaway Ends On Sunday, 24 April 2020, 8:00am
